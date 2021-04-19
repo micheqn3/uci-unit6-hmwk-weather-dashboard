@@ -45,7 +45,7 @@ function getUserInput(event) { // This function retrieves user input and creates
 
     if (userInput) { // Checking if the user entered something
         console.log(userInput); // Checking if user's input was saved 
-        var cityUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&units=imperial&appid=bcb03c4915d5966190a74c259d6834d8";
+        var cityUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&units=imperial&appid=bcb03c4915d5966190a74c259d6834d8";
         appendItems(cityUrl);   // Start the appendItems function with the user input. API parameter = imperial for fahrenheit
     } else {
         alert("Please enter in a city.");  // Validation for if the user doesn't enter in anything 
@@ -83,13 +83,13 @@ function appendItems(cityUrl) {
 
             /* Goes through 0, 8, 16, 24, 32 for next day's data */ 
             var icon1 = data.list[0].weather[0].icon; // Day 1 Forecast
-            var iconUrl1 = "http://openweathermap.org/img/w/" + icon1 + ".png";
+            var iconUrl1 = "https://openweathermap.org/img/w/" + icon1 + ".png";
             day1.text("TODAY"); // Same as the main card
             day1Icon.attr("src", iconUrl1);
             day1Temp.text(temp); // Same as the main card
 
             var icon2 = data.list[8].weather[0].icon; // Day 2 Forecast
-            var iconUrl2 = "http://openweathermap.org/img/w/" + icon2 + ".png";
+            var iconUrl2 = "https://openweathermap.org/img/w/" + icon2 + ".png";
             var date2 = moment.unix(data.list[8].dt).format("dddd");
             day2.text(date2);
             day2Icon.attr("src", iconUrl2);
@@ -97,7 +97,7 @@ function appendItems(cityUrl) {
             day2Temp.text(date2Temp);
 
             var icon3 = data.list[16].weather[0].icon; // Day 3 Forecast
-            var iconUrl3 = "http://openweathermap.org/img/w/" + icon3 + ".png";
+            var iconUrl3 = "https://openweathermap.org/img/w/" + icon3 + ".png";
             var date3 = moment.unix(data.list[16].dt).format("dddd");
             day3.text(date3);
             day3Icon.attr("src", iconUrl3);
@@ -105,7 +105,7 @@ function appendItems(cityUrl) {
             day3Temp.text(date3Temp);
 
             var icon4 = data.list[24].weather[0].icon; // Day 4 Forecast
-            var iconUrl4 = "http://openweathermap.org/img/w/" + icon4 + ".png";
+            var iconUrl4 = "https://openweathermap.org/img/w/" + icon4 + ".png";
             var date4 = moment.unix(data.list[24].dt).format("dddd");
             day4.text(date4);
             day4Icon.attr("src", iconUrl4);
@@ -113,7 +113,7 @@ function appendItems(cityUrl) {
             day4Temp.text(date4Temp);
 
             var icon5 = data.list[32].weather[0].icon; // Day 5 Forecast
-            var iconUrl5 = "http://openweathermap.org/img/w/" + icon5 + ".png";
+            var iconUrl5 = "https://openweathermap.org/img/w/" + icon5 + ".png";
             var date5 = moment.unix(data.list[32].dt).format("dddd");
             day5.text(date5);
             day5Icon.attr("src", iconUrl5);
@@ -181,7 +181,7 @@ function showHistoryData(e) {
     items = JSON.parse(items);
     var nameOfCity = e.target.getAttribute("name");
     var obj =items.find(i => i.cityName === nameOfCity); //  Finds the array in the object that matches city name
-    
+
     citySpan.text(obj.cityName); // Fills the screen with the data of the city clicked on 
     dateSpan.text(obj.date);
     tempSpan.text(obj.temp);
