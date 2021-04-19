@@ -30,6 +30,7 @@ var welcomeText = $(".welcomeText"); // Targets the welcome title
 var containerBlock = $(".containerBlock"); // Targets the container holding the 5 day forecast
 var card = $(".card") // Targets the main card holding the city/date info
 var historyList = $(".history-list") // Targets the search history
+var clearBtnLocation = $(".clear-btn-location")
 
 $( document ).ready(function() {
     containerBlock.hide(); // Hide the forecast container on page load
@@ -167,6 +168,10 @@ function showHistoryBtn() {
             button.attr("name", items[i].cityName);
             historyList.append(button);
         }
+        var buttontag = $("<button>"); // Create clear button 
+        buttontag.addClass("list-group-item clear-btn");
+        buttontag.text("CLEAR ALL");
+        clearBtnLocation.append(buttontag);
     } else {
         console.log("Empty local storage.");
     }
@@ -174,7 +179,7 @@ function showHistoryBtn() {
 
 function showHistoryData(e) {
     e.preventDefault;
-    welcomeText.show(1000); // Show the welcome text
+    welcomeText.hide(1000); // Show the welcome text
     containerBlock.show(2000); // Show the forecast container
     card.show(1000); // Show the main city/date card
     var items = localStorage.getItem("items");
@@ -205,7 +210,15 @@ function showHistoryData(e) {
 }
 
 showHistoryBtn(); // Show the recent searches on page load
-historyList.on("click", showHistoryData) // When the user clicks the history button, show data on screen
 searchBtn.on("click", getUserInput); // When the user clicks the search, this function will execute
+historyList.on("click", showHistoryData) // When the user clicks the history button, show data on screen
+
+clearBtnLocation.on("click", function() { // When the clear button is clicked, local storage + history list is cleared
+    console.log("Clear button clicked.");
+    $(this).hide();
+    localStorage.clear();
+    historyList.text("");
+    window.location.reload();
+})
 
 
