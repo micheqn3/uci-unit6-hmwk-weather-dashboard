@@ -26,7 +26,5 @@ https://micheqn3.github.io/uci-unit6-hmwk-weather-dashboard/
 
 ### Screenshot of deployed application 
 
-
-
-
+![Screenshot](/Assets/weather-dashboard-screenshot.png)
 
