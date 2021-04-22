@@ -35,7 +35,6 @@ var clearBtnLocation = $(".clear-btn-location")
 $( document ).ready(function() {
     containerBlock.hide(); // Hide the forecast container on page load
     card.hide(); // Hide the city name/date on page load
-    
 });
 
 function getUserInput(event) { // This function retrieves user input and creates a url endpoint with that info
@@ -62,17 +61,17 @@ function appendItems(cityUrl) {
                 return response.json(); // Return response as JSON
             } else {
                 alert("Please enter a valid city name."); // If user did not enter a valid city, an alert will pop up 
+                return;
             }
         })
         .then(function(data) { // Do this to the data
             console.log(data);
-            /*  ********* UV Index  */
             welcomeText.hide(1000); // Hide the welcome text
             containerBlock.show(2000); // Show the forecast container
             card.show(); // Show the city name/date
             var cityName = data.city.name; // Accesses the city's name 
             var country = data.city.country; // Accesses the country 
-            var date = moment.unix(data.list[0].dt).format("MMMM YY"); // Converts to current date in city
+            var date = moment.unix(data.list[0].dt).format("MMMM Do"); // Converts to current date in city
             var temp = data.list[0].main.temp; // Temperature in fah. Can use this again for day 1 temp below.
             var humidity = data.list[0].main.humidity; // Humidity in %
             var wind = data.list[0].wind.speed; // Wind speed in m/hour
@@ -121,7 +120,7 @@ function appendItems(cityUrl) {
             var date5Temp = data.list[32].main.temp; 
             day5Temp.text(date5Temp);
 
-            var storeObject = {
+            var storeObject = { // Saving the data into an object
                 "cityName": cityName,
                 "country": country,
                 "date": date, 
@@ -180,6 +179,7 @@ function showHistoryBtn() {
 function showHistoryData(e) {
     e.preventDefault;
     welcomeText.hide(1000); // Show the welcome text
+    $(".refresh").hide();
     containerBlock.show(2000); // Show the forecast container
     card.show(1000); // Show the main city/date card
     var items = localStorage.getItem("items");
@@ -209,10 +209,6 @@ function showHistoryData(e) {
     day5Temp.text(obj.date5Temp);
 }
 
-showHistoryBtn(); // Show the recent searches on page load
-searchBtn.on("click", getUserInput); // When the user clicks the search, this function will execute
-historyList.on("click", showHistoryData) // When the user clicks the history button, show data on screen
-
 clearBtnLocation.on("click", function() { // When the clear button is clicked, local storage + history list is cleared
     console.log("Clear button clicked.");
     $(this).hide();
@@ -220,5 +216,11 @@ clearBtnLocation.on("click", function() { // When the clear button is clicked, l
     historyList.text("");
     window.location.reload();
 })
+
+showHistoryBtn(); // Show the recent searches on page load
+searchBtn.on("click", getUserInput); // When the user clicks the search, this function will execute
+historyList.on("click", showHistoryData) // When the user clicks the history button, show data on screen
+
+
 
 
