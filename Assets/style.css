@@ -130,9 +130,12 @@ p span { /* Targets the data being fetched */
     }
 }
 
-@media(max-width: 660px){ /* This will hide the side bar on smaller devices */
+@media(max-width: 660px){ /* This will hide the side bar and refresh p tag on smaller devices */
     .hide {
       visibility: hidden;
+    }
+    .refresh {
+        visibility: hidden;
     }
 }
 
