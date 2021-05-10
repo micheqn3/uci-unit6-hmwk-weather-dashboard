@@ -1,4 +1,4 @@
-## UCI Homework #6 Weather Dashboard
+## Weather Dashboard
 
 This repository contains a weather dashboard that collects the user input, fetches the city's data from Open Weather API, 
 displays it onto the page, and appends the recent history searches onto the side bar.
@@ -21,7 +21,7 @@ displays it onto the page, and appends the recent history searches onto the side
 
 ### Link to deployed application
 
-https://micheqn3.github.io/uci-unit6-hmwk-weather-dashboard/
+https://micheqn3.github.io/weather-dashboard/
 
 
 ### Screenshot of deployed application 
