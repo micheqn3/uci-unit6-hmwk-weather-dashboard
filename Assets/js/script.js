@@ -1,24 +1,3 @@
-let day1 = $(".day1"); // Targets day 1 card
-let day1Icon = $(".day1Icon");
-let day1Temp = $(".day1Temp");
-let day1Humidity = $(".day1Humidity"); 
-let day2 = $(".day2"); // Targets day 2 card
-let day2Icon = $(".day2Icon");
-let day2Temp = $(".day2Temp");
-let day2Humidity = $(".day2Humidity");
-let day3 = $(".day3"); // Targets day 3 card
-let day3Icon = $(".day3Icon");
-let day3Temp = $(".day3Temp");
-let day3Humidity = $(".day3Humidity");
-let day4 = $(".day4"); // Targets day 4 card
-let day4Icon = $(".day4Icon");
-let day4Temp = $(".day4Temp");
-let day4Humidity = $(".day4Humidity");
-let day5 = $(".day5"); // Targets day 5 card
-let day5Icon = $(".day5Icon");
-let day5Temp = $(".day5Temp");
-let day5Humidity = $(".day5Humidity");
-
 $( document ).ready(function() {
     $(".containerBlock").hide(); // Hide the forecast container on page load
     $(".card").hide(); // Hide the city name/date on page load
@@ -26,12 +5,10 @@ $( document ).ready(function() {
 
 function getUserInput(event) { // This function retrieves user input and creates a url endpoint with that info
     event.preventDefault();
-    console.log("Button clicked works"); // Checking if button was clicked
     let userInput = $(".inputForm").val().trim(); // Saves the user's input and removes whitespace
     $(".inputForm").val(""); // Clears the input form 
 
     if (userInput) { // Checking if the user entered something
-        console.log(userInput); // Checking if user's input was saved 
         let enc = "YmNiMDNjNDkxNWQ1OTY2MTkwYTc0YzI1OWQ2ODM0ZDg=";
         let dec = window.atob(enc);
         let cityUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&units=imperial&appid=" + dec;
@@ -42,11 +19,24 @@ function getUserInput(event) { // This function retrieves user input and creates
 };
 
 function appendItems(cityUrl) {
-    console.log(cityUrl); // Checking
+    let day1 = $(".day1"); // Targets day 1 card
+    let day1Icon = $(".day1Icon");
+    let day1Temp = $(".day1Temp");
+    let day2 = $(".day2"); // Targets day 2 card
+    let day2Icon = $(".day2Icon");
+    let day2Temp = $(".day2Temp");
+    let day3 = $(".day3"); // Targets day 3 card
+    let day3Icon = $(".day3Icon");
+    let day3Temp = $(".day3Temp");
+    let day4 = $(".day4"); // Targets day 4 card
+    let day4Icon = $(".day4Icon");
+    let day4Temp = $(".day4Temp");
+    let day5 = $(".day5"); // Targets day 5 card
+    let day5Icon = $(".day5Icon");
+    let day5Temp = $(".day5Temp");  
     fetch(cityUrl)
         .then(function(response) {
             if(response.ok) {
-                console.log("Fetch response worked"); // Checking if response was okay
                 return response.json(); // Return response as JSON
             } else {
                 alert("Please enter a valid city name."); // If user did not enter a valid city, an alert will pop up 
@@ -54,7 +44,6 @@ function appendItems(cityUrl) {
             }
         })
         .then(function(data) { // Do this to the data
-            console.log(data);
             $(".welcomeText").hide(1000); // Hide the welcome text
             $(".containerBlock").show(2000); // Show the forecast container
             $(".card").show(); // Show the city name/date
@@ -175,7 +164,21 @@ function showHistoryData(e) {
     items = JSON.parse(items);
     let nameOfCity = e.target.getAttribute("name");
     let obj =items.find(i => i.cityName === nameOfCity); //  Finds the array in the object that matches city name
-
+    let day1 = $(".day1"); // Targets day 1 card
+    let day1Icon = $(".day1Icon");
+    let day1Temp = $(".day1Temp");
+    let day2 = $(".day2"); // Targets day 2 card
+    let day2Icon = $(".day2Icon");
+    let day2Temp = $(".day2Temp");
+    let day3 = $(".day3"); // Targets day 3 card
+    let day3Icon = $(".day3Icon");
+    let day3Temp = $(".day3Temp");
+    let day4 = $(".day4"); // Targets day 4 card
+    let day4Icon = $(".day4Icon");
+    let day4Temp = $(".day4Temp");
+    let day5 = $(".day5"); // Targets day 5 card
+    let day5Icon = $(".day5Icon");
+    let day5Temp = $(".day5Temp");
     $(".citySpan").text(obj.cityName); // Fills the screen with the data of the city clicked on 
     $(".dateSpan").text(obj.date);
     $(".tempSpan").text(obj.temp);
@@ -199,7 +202,6 @@ function showHistoryData(e) {
 }
 
 $(".clear-btn-location").on("click", function() { // When the clear button is clicked, local storage + history list is cleared
-    console.log("Clear button clicked.");
     $(this).hide();
     localStorage.clear();
     $(".history-list").text("");
