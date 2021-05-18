@@ -1,3 +1,4 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## Weather Dashboard
 
 This repository contains a weather dashboard that collects the user input, fetches the city's data from Open Weather API, 
@@ -14,6 +15,14 @@ displays it onto the page, and appends the recent history searches onto the side
   - style.css- This file provides additional styling to the page.
 
   - reset.css- This file will force every browser to have all of its styles reset to null.
+
+### Technologies/Languages used: 
+
+  - JavaScript
+  - jQuery
+  - Moment.js
+  - OpenWeather API
+  - Bootstrap
   
 ### To execute the file: 
 
@@ -27,4 +36,8 @@ https://micheqn3.github.io/weather-dashboard/
 ### Screenshot of deployed application 
 
 ![Screenshot](/Assets/weather-dashboard-screenshot.png)
+
+### License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+MIT 
 
