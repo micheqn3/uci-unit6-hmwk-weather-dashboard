@@ -72,12 +72,6 @@ p span { /* Targets the data being fetched */
     border: 1px solid gray;
 }
 
-.clear-btn {
-    background-color: gray;
-    color: white;
-    font-size: 15px;
-}
-
 .page-header { /* Styles the Dashboard title */
     font-size: 26px;
 }
@@ -109,11 +103,6 @@ p span { /* Targets the data being fetched */
     text-align: center;
 }
 
-.refresh {
-    font-size: 15px;
-    text-align: center;
-}
-
 .searchBtn:hover,
 .history-list button:hover,
 .clear-btn:hover {
@@ -133,9 +122,6 @@ p span { /* Targets the data being fetched */
 @media(max-width: 770px){ /* This will hide the side bar and refresh p tag on smaller devices */
     .hide {
       visibility: hidden;
-    }
-    .refresh {
-        visibility: hidden;
     }
 }
 

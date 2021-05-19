@@ -44,6 +44,8 @@ function appendItems(cityUrl) {
             }
         })
         .then(function(data) { // Do this to the data
+    
+
             $(".welcomeText").hide(1000); // Hide the welcome text
             $(".containerBlock").show(2000); // Show the forecast container
             $(".card").show(); // Show the city name/date
@@ -127,7 +129,12 @@ function appendItems(cityUrl) {
             }
             items.push(storeObject); // Push the object into the array
             let allItems = JSON.stringify(items);
-            localStorage.setItem("items", allItems); // Save allItems into local storage
+            localStorage.setItem("items", allItems); // Save allItems into local storage    
+            let button = $("<button>"); // Appends the button to the history list
+            button.addClass("list-group-item");
+            button.text(cityName);
+            button.attr("name", cityName);
+            $(".history-list").append(button);
         });            
 };
 
@@ -145,19 +152,14 @@ function showHistoryBtn() {
             button.attr("name", items[i].cityName);
             $(".history-list").append(button);
         }
-        let buttontag = $("<button>"); // Create clear button 
-        buttontag.addClass("list-group-item clear-btn");
-        buttontag.text("CLEAR ALL");
-        $(".clear-btn-location").append(buttontag);
     } else {
         console.log("Empty local storage.");
     }
-}
+} 
 
 function showHistoryData(e) {
     e.preventDefault;
     $(".welcomeText").hide(1000); // Show the welcome text
-    $(".refresh").hide();
     $(".containerBlock").show(2000); // Show the forecast container
     $(".card").show(1000); // Show the main city/date card
     let items = localStorage.getItem("items");

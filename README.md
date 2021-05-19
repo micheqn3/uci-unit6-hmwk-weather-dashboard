@@ -35,7 +35,7 @@ https://micheqn3.github.io/weather-dashboard/
 
 ### Screenshot of deployed application 
 
-![Screenshot](/Assets/weather-dashboard-screenshot.png)
+![Screenshot](/Assets/screenshot.png)
 
 ### License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
